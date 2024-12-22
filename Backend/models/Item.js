@@ -1,10 +1,15 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 require('dotenv').config();
+
+// Configuration pour éviter le DeprecationWarning
+mongoose.set('strictQuery', true); // ou false selon vos besoins
+
+// Définition du schéma pour Item
 const ItemSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true // Correctement orthographié
     },
     amount: {
         type: Number,
@@ -15,13 +20,16 @@ const ItemSchema = new Schema({
     },
     description: {
         type: String,
-        require: true
+        required: true // Correctement orthographié
     },
     color: {
         type: String,
-        require: true
+        required: true // Correctement orthographié
     }
 });
 
+// Création du modèle
 const Item = mongoose.model('Item', ItemSchema);
+
+// Exportation du modèle
 module.exports = Item;
